@@ -1,0 +1,40 @@
+<h1>User Listing </h1>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 {
+    width: 100%;    
+    background-color: #f1f1c1;
+}
+</style>
+<table style="width:100%">
+<tr>
+<th>UserId</th>
+<th>Username</th>
+<th>Description</th>
+<th>Created_At</th>
+<th>Updated_At</th>
+</tr>
+<% @customers.each do |customer| %>
+
+<tr>
+	<td><%= customer.cust_id %></td>
+	<td><%= customer.name %></td>
+	<td><%= customer.description %></td>
+    <td><%= customer.created_at %></td>
+    <td><%= customer.updated_at %></td>
+	<td><%= link_to 'edit', edit_customer_path(customer) %></td>
+	<td><%= link_to "delete", customer_path(customer), :method => :delete,
+                                  data: { confirm: "You sure?" } %></td>    
+</tr>
+<% end %>
+</table>
+<br>
+<%= button_to "New User", new_customer_path, :id => "open-contacts-dialog-btn",
+      :class => "inbox-sf-add-btn tip", :method => :get %>

@@ -1,0 +1,20 @@
+<% if flash[:notice] %>
+    <div id="notice"><%= flash[:notice] %></div>
+<% end %>
+<p>
+<strong>UserId</strong>
+<%= @customer.cust_id %>
+</p>
+
+<p>
+<strong>Username</strong>
+<%= @customer.name %>
+</p>
+
+<p>
+<strong>Description</strong>
+<%= @customer.description %>
+</p>
+
+<%= button_to "Back", customers_path, :id => "open-contacts-dialog-btn",
+      :class => "inbox-sf-add-btn tip", :method => :get %>
